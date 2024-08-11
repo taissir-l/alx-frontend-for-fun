@@ -21,21 +21,21 @@ if __name__ == '__main__':
     with open(sys.argv[1]) as read:
         with open(sys.argv[2], 'w') as html:
             unordered_start, ordered_start, paragraph = False, False, False
-            # bold syntax
+            #  syntax
             for line in read:
                 line = line.replace('**', '<b>', 1)
                 line = line.replace('**', '</b>', 1)
                 line = line.replace('__', '<em>', 1)
                 line = line.replace('__', '</em>', 1)
 
-                # md5
+                # md5 files 
                 md5 = re.findall(r'\[\[.+?\]\]', line)
                 md5_inside = re.findall(r'\[\[(.+?)\]\]', line)
                 if md5:
                     line = line.replace(md5[0], hashlib.md5(
                         md5_inside[0].encode()).hexdigest())
 
-                # remove the letter C
+                # remove the  C
                 remove_letter_c = re.findall(r'\(\(.+?\)\)', line)
                 remove_c_more = re.findall(r'\(\((.+?)\)\)', line)
                 if remove_letter_c:
@@ -50,7 +50,7 @@ if __name__ == '__main__':
                 unordered_num = length - len(unordered)
                 ordered = line.lstrip('*')
                 ordered_num = length - len(ordered)
-                # headings, lists
+                # headingsand lists
                 if 1 <= heading_num <= 6:
                     line = '<h{}>'.format(
                         heading_num) + headings.strip() + '</h{}>\n'.format(
