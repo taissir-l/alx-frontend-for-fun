@@ -1,6 +1,6 @@
 ## Accessibility
 
-### Learning Objectives
+# Learning Objectives
 
 - ARIA’s main purpose
 - WCAG conformance levels (A, AA and AAA)
